@@ -7,7 +7,7 @@ variable "AWS_REGION" {
 }
 
 variable "SECURITY_GROUP" {
-    type = "list"
+    type = list
     default = ["sg-24076", "sg-90890"]
 
 }
