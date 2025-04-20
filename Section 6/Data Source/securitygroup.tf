@@ -1,6 +1,6 @@
 data "aws_ip_ranges" "ap_southeast_ip_range" {
     region = ["ap-southeast-1", "ap-southeast-2"]
-    services="ec2"
+    services=["ec2"]
 }
 
 resource "aws_security_group" "sg_custom_ap_south" {
@@ -13,7 +13,7 @@ resource "aws_security_group" "sg_custom_ap_south" {
         cidr_blocks = data.aws_ip_ranges.ap_southeast_ip_range.cidr_blocks
     }
 
-    tags {
+    tags = {
         CreateDate = data.aws_ip_ranges.ap_southeast_ip_range.create_data
         SyncToken = data.aws_ip_ranges.ap_southeast_ip_range.sync_token
     }
