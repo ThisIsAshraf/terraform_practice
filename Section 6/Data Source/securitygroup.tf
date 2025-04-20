@@ -14,7 +14,7 @@ resource "aws_security_group" "sg_custom_ap_south" {
     }
 
     tags = {
-        CreateDate = data.aws_ip_ranges.ap_southeast_ip_range.create_data
+        CreateDate = data.aws_ip_ranges.ap_southeast_ip_range.create_date
         SyncToken = data.aws_ip_ranges.ap_southeast_ip_range.sync_token
     }
 }
