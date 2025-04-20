@@ -111,7 +111,7 @@ resource "aws_internet_gateway" "lavel_up_vpc_GW" {
 resource "aws_route_table" "level_up_public" {
   vpc_id = aws_vpc.level_up_vpc.id
 
-  route = {
+  route {
     cidr_block = "0.0.0.0/0"
     gateway_id = aws_internet_gateway.lavel_up_vpc_GW.id
     
