@@ -38,3 +38,9 @@ resource "aws_instance" "WebServer" {
 #   instance_id = aws_instance.WebServer.id
 
 # }
+
+# Extract the Public IP of EC2
+
+output "public_ip" {
+  value = aws_instance.WebServer.public_ip
+}
