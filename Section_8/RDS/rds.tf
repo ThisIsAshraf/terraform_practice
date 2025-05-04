@@ -9,7 +9,7 @@ resource "aws_db_subnet_group" "maridb_subnets" {
 # RDS Parameters
 
 resource "aws_db_parameter_group" "level_up_mariadb_parameters" {
-  name = "level_up_mariadb_parameters"
+  name = "levelup-mariadb-parameters"
   family = "mariadb11.4"
   description = "MariaDB Parameter Group"
 
@@ -29,7 +29,7 @@ resource "aws_db_instance" "levelup_mariadb" {
   username = "root"
   password = "Admin@123"
   db_subnet_group_name = aws_db_subnet_group.maridb_subnets.name
-  parameter_group_name = aws_db_parameter_group.level_up_mariadb_parameters.name
+  parameter_group_name = aws_db_parameter_group.levelup-mariadb-parameters.name
   multi_az = "false"
   vpc_security_group_ids = [aws_security_group.allow_mariadb.id]
   storage_type = "gp2"
