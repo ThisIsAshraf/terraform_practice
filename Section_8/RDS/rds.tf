@@ -8,7 +8,7 @@ resource "aws_db_subnet_group" "maridb_subnets" {
 
 # RDS Parameters
 
-resource "aws_db_parameter_group" "level_up_mariadb_parameters" {
+resource "aws_db_parameter_group" "levelup-mariadb-parameters" {
   name = "levelup-mariadb-parameters"
   family = "mariadb11.4"
   description = "MariaDB Parameter Group"
