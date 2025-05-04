@@ -10,7 +10,7 @@ resource "aws_db_subnet_group" "maridb_subnets" {
 
 resource "aws_db_parameter_group" "levelup-mariadb-parameters" {
   name = "levelup-mariadb-parameters"
-  family = "mariadb11.4"
+  family = "mariadb10.6"
   description = "MariaDB Parameter Group"
 
   parameter {
@@ -21,10 +21,10 @@ resource "aws_db_parameter_group" "levelup-mariadb-parameters" {
 
 # RDS Instance Properties
 resource "aws_db_instance" "levelup_mariadb" {
-  allocated_storage = 10  # 10GB Storage
+  allocated_storage = 10
   engine = "mariadb"
-  engine_version = "11.4.5"
-  instance_class = "db.t2.micro"
+  engine_version = "10.6.14"  # Changed to a supported version
+  instance_class = "db.t2.micro"  # Keep micro instance
   identifier = "mariadb"
   username = "root"
   password = "Admin@123"
