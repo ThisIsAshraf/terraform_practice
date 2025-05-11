@@ -4,7 +4,7 @@ resource "aws_launch_configuration" "levelup-launchconfig" {
   name_prefix = "levelup-launchconfig"
   image_id = lookup(var.AMIS, var.AWS_REGION)
   instance_type = "t2.micro"
-  key_name = aws_key_pair.levelup_key.name
+  key_name = aws_key_pair.levelup_key.key_name
 }
 
 # Generate Key
@@ -37,7 +37,7 @@ resource "aws_autoscaling_group" "levelup-autoscalling" {
 resource "aws_autoscaling_policy" "levelup-cpu-policy" {
   name = "levelup-cpu-policy"
   autoscaling_group_name = aws_autoscaling_group.levelup-autoscalling.name
-  adjustment_type = "ChaneInCapacity"
+  adjustment_type = "ChangeInCapacity"
   scaling_adjustment = "1"
   cooldown = "200"
   policy_type = "SimpleScaling"
@@ -71,7 +71,7 @@ resource "aws_cloudwatch_metric_alarm" "levelup-cpu-alarm" {
 resource "aws_autoscaling_policy" "levelup-cpu-policy-scaledown" {
   name = "levelup-cpu-policy-scaledown"
   autoscaling_group_name = aws_autoscaling_group.levelup-autoscalling.name
-  adjustment_type = "ChaneInCapacity"
+  adjustment_type = "ChangeInCapacity"
   scaling_adjustment = "-1"
   cooldown = "200"
   policy_type = "SimpleScaling"
